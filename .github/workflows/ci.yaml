@@ -18,7 +18,8 @@ jobs:
           pytest: false
         - linux: type
           pytest: false
-        - linux: test
+        - linux: test-download
+        - linux: test-requires
   publish:
     needs: [test]
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v1
