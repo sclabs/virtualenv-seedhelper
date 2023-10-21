@@ -38,7 +38,8 @@ Note that this overwrites `virtualenv.ini` if it already exists.
 
 Instead of looking up and downloading wheel URLs one by one, we can use
 `seedhelper require` to download the wheels for all the dependencies of a
-requirement, placing them inside
+requirement, placing all of their wheels in the `SEEDHELPER_WHEELS_DIR` so that
+they all get seeded into newly-created virtualenvs.
 
     seedhelper require requests==2.31.0
 
