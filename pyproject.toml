@@ -1,0 +1,57 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools>=43.0.0",
+    "setuptools_scm[toml]>=6.2",
+    "wheel",
+]
+
+[project]
+name = "virtualenv-seedhelper"
+description = "A virtualenv seeder to seed wheels from a folder"
+authors = [{ name = "Thomas Gilgenast", email = "thomasgilgenast@gmail.com" }]
+urls = { repository = "https://github.com/sclabs/virtualenv-seedhelper" }
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.7"
+dependencies = [
+    "fire",
+    "platformdirs",
+    "virtualenv",
+]
+
+[project.optional-dependencies]
+lint = [
+    "black==23.3.0",
+    "ruff==0.0.262",
+]
+type = [
+    "mypy==1.2.0",
+]
+test = [
+    "pytest==7.3.1",
+    "tox==4.4.12",
+    "tox-extras==0.0.1",
+]
+dev = [
+    "tox-extras[lint,type,test]",
+]
+
+[project.entry-points."virtualenv.seed"]
+seedhelper = "virtualenv_seedhelper:SeedHelper"
+
+[project.scripts]
+seedhelper = "virtualenv_seedhelper:main"
+
+[tool.mypy]
+ignore_missing_imports = true
+strict = true
+
+[tool.ruff]
+select = ["E", "F", "W", "I"]
+
+[tool.setuptools]
+py-modules = ["virtualenv_seedhelper"]
+
+[tool.setuptools_scm]
+root = "."
